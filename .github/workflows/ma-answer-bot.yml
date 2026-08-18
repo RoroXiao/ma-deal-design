@@ -1,0 +1,65 @@
+name: ma-answer-bot
+
+# 触发:有新 Issue(用户提问)时自动回答
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  issues: write
+  contents: read
+
+concurrency:
+  group: ma-bot-${{ github.event.issue.number }}
+  cancel-in-progress: false
+
+jobs:
+  answer:
+    # 跳过_pull_request协作者触发的意外情况
+    if: ${{ !github.event.issue.pull_request }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      # 1. 拉取本仓库(机器人脚本)
+      - uses: actions/checkout@v4
+
+      # 2. 运行时拉取私有知识库(用完即弃,不落公开仓库)
+      - name: Checkout private references
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ secrets.REFS_REPO }}
+          token: ${{ secrets.GH_PAT }}
+          path: refs-private
+          sparse-checkout: |
+            references
+
+      # 3. Python 环境
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # 4. 生成并贴出回答
+      - name: Generate answer
+        env:
+          GH_TOKEN: ${{ github.token }}
+          MODELS_PAT: ${{ secrets.GH_PAT }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE_USER: ${{ github.event.issue.user.login }}
+          REPO: ${{ github.repository }}
+          MODEL_ID: ${{ vars.MODEL_ID || 'openai/gpt-4o-mini' }}
+          REFS_DIR: refs-private/references
+          SYSTEM_PROMPT_FILE: bot/system_prompt.md
+          DAILY_LIMIT: '3'
+        run: python bot/answer.py
+
+      # 5. 打"已回答"标签(便于浏览;标签不存在时自动创建)
+      - name: Label as answered
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          gh label create "已回答" --color 0e8a16 --description "机器人已生成回答" 2>/dev/null || true
+          gh issue edit "$ISSUE_NUMBER" --add-label "已回答"
+        if: ${{ success() }}
