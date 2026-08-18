@@ -39,9 +39,11 @@
   .btn-solid:hover{background:var(--gold-l);transform:translateY(-1px);}
   .btn-ghost{border-color:rgba(201,164,92,.55);color:#eadfca;background:transparent;}
   .btn-ghost:hover{border-color:var(--gold-l);color:#fff;}
-  .stats{margin-top:56px;display:flex;border-top:1px solid rgba(201,164,92,.25);padding-top:28px;flex-wrap:wrap;}
-  .stat{padding-right:56px;margin-right:56px;border-right:1px solid rgba(201,164,92,.18);}
-  .stat:last-child{border-right:none;}
+  .stats{margin-top:56px;display:flex;flex-wrap:nowrap;overflow-x:auto;border-top:1px solid rgba(201,164,92,.25);padding-top:28px;scrollbar-width:none;}
+  .stats::-webkit-scrollbar{display:none;}
+  .stat{flex:1 1 0;min-width:0;padding:0 34px;border-right:1px solid rgba(201,164,92,.18);}
+  .stat:first-child{padding-left:0;}
+  .stat:last-child{border-right:none;padding-right:0;}
   .stat .n{font-size:30px;color:var(--gold-l);}
   .stat .t{font-size:12.5px;color:#98917f;margin-top:6px;letter-spacing:.1em;}
 
@@ -137,6 +139,16 @@
   .md strong{color:var(--ink);}
   .md hr{border:none;border-top:1px solid var(--line);margin:14px 0;}
   .md blockquote{border-left:3px solid var(--gold-l);padding-left:14px;color:var(--mut);margin:10px 0;}
+  .ppt-bar{display:flex;gap:10px;align-items:center;margin-bottom:12px;flex-wrap:wrap;}
+  .ppt-frame{width:100%;height:560px;border:1px solid var(--line);background:#0e1a2b;}
+  /* 双语标注 */
+  .h-en{font-family:Georgia,serif;font-size:12.5px;letter-spacing:.22em;color:#a09880;font-weight:400;margin-left:14px;text-transform:uppercase;}
+  nav .links a i{display:block;font-size:9px;letter-spacing:.16em;color:#8d8676;font-style:normal;margin-top:2px;text-transform:uppercase;}
+  .tab i{display:block;font-size:9.5px;letter-spacing:.14em;color:#98917f;font-style:normal;margin-top:3px;font-family:Georgia,serif;text-transform:uppercase;}
+  .dlab em{display:block;font-size:9.5px;letter-spacing:.16em;color:#9a9284;font-style:normal;margin-top:3px;font-family:Georgia,serif;text-transform:uppercase;}
+  .stat .t i{font-style:normal;color:#8d8676;margin-left:4px;}
+  .u h3 span{display:block;font-family:Georgia,serif;font-size:10.5px;letter-spacing:.14em;color:#a09880;font-weight:400;margin-top:4px;text-transform:uppercase;}
+  h1 .en-line{display:block;font-size:14px;font-weight:400;color:#8d8a7c;margin-top:16px;letter-spacing:.12em;font-family:Georgia,serif;}
   .desk-err{display:none;margin-top:14px;font-size:13px;color:#a33b3b;background:#f9efec;border:1px solid #e6c8c2;padding:12px 16px;line-height:1.8;}
   .desk-hint{margin-top:22px;font-size:12.3px;color:var(--mut);line-height:1.9;border-top:1px dashed var(--line);padding-top:16px;}
   .desk-hint b{color:var(--ink);}
@@ -158,7 +170,7 @@
     h1{font-size:32px;} h1 .thin{font-size:18px;}
     .grid,.use,.flow,.about{grid-template-columns:1fr;}
     nav .links{display:none;}
-    .stat{padding-right:28px;margin-right:28px;}
+    .stat{padding:0 16px;margin:0;min-width:150px;}
     section{padding:56px 0;}
     header{padding:64px 0 56px;}
     .desk-body{padding:24px 20px;}
@@ -172,7 +184,7 @@
   <div class="wrap">
     <a class="brand serif" href="#top">MA&nbsp;DEAL&nbsp;<b>DESIGN</b></a>
     <div class="links">
-      <a href="#stack">核心能力栈</a><a href="#scene">场景覆盖</a><a href="#flow">工作流程</a><a href="#use">使用方式</a><a href="#desk">AI问答</a><a href="#about">关于</a>
+      <a href="#stack">核心能力栈<i>Stack</i></a><a href="#scene">场景覆盖<i>Scenes</i></a><a href="#flow">工作流程<i>Workflow</i></a><a href="#use">使用方式<i>Access</i></a><a href="#desk">AI问答<i>AI Desk</i></a><a href="#about">关于<i>About</i></a>
     </div>
   </div>
 </nav>
@@ -182,17 +194,18 @@
     <div class="eyebrow">CROSS-BORDER M&amp;A&nbsp;·&nbsp;STRUCTURED FINANCE</div>
     <h1 class="serif">跨境并购与结构化融资实务专家
       <span class="thin">并购交易全流程实务指导 —— 从标的筛选到投后整合</span>
+      <span class="en-line">FULL-CYCLE M&amp;A EXECUTION · FROM TARGET SCREENING TO POST-MERGER INTEGRATION</span>
     </h1>
     <p class="hero-desc">覆盖<em>标的筛选、交易结构设计、估值建模、尽职调查、商务谈判、交易文件起草与投后整合</em>全流程。当您需要<em>投行级别的并购分析、估值方案、尽调框架或谈判策略</em>,或涉及 A股 / 港股 / 跨境 / 国企 / PE / LBO / 矿业 / 困境资产重组 / ABS 等复杂交易场景时使用。</p>
     <div class="cta">
-      <a class="btn btn-solid" href="#desk">AI Deal Desk · 即时问答</a>
-      <a class="btn btn-ghost" href="#use">获取 Pro 完整版</a>
+      <a class="btn btn-solid" href="#desk">AI Deal Desk · 即时问答 <span style="font-family:Georgia,serif;font-size:12px;letter-spacing:.1em;opacity:.85;">Instant Q&amp;A</span></a>
+      <a class="btn btn-ghost" href="#use">获取 Pro 完整版 <span style="font-family:Georgia,serif;font-size:12px;letter-spacing:.1em;opacity:.85;">Get Pro</span></a>
     </div>
     <div class="stats">
-      <div class="stat"><div class="n serif">22</div><div class="t">能力模块</div></div>
-      <div class="stat"><div class="n serif">37</div><div class="t">深度方法论文档</div></div>
-      <div class="stat"><div class="n serif">11</div><div class="t">即用交付模板</div></div>
-      <div class="stat"><div class="n serif">20+</div><div class="t">复杂交易场景</div></div>
+      <div class="stat"><div class="n serif">22</div><div class="t">能力模块 <i>Modules</i></div></div>
+      <div class="stat"><div class="n serif">37</div><div class="t">深度方法论文档 <i>References</i></div></div>
+      <div class="stat"><div class="n serif">11</div><div class="t">即用交付模板 <i>Templates</i></div></div>
+      <div class="stat"><div class="n serif">20+</div><div class="t">复杂交易场景 <i>Scenarios</i></div></div>
     </div>
   </div>
 </header>
@@ -200,7 +213,7 @@
 <!-- 01 核心能力栈 -->
 <section id="stack">
   <div class="wrap">
-    <div class="sec-head"><span class="sec-no">01</span><h2 class="serif">核心能力栈</h2></div>
+    <div class="sec-head"><span class="sec-no">01</span><h2 class="serif">核心能力栈<span class="h-en">Core Capability Stack</span></h2></div>
     <p class="sec-sub">由一线跨境并购与结构化融资实务经验构建,四层能力互相咬合:从行业研究到交易落地,从建模测算到文书交付。</p>
     <div class="grid">
       <div class="cap">
@@ -238,7 +251,7 @@
 <!-- 02 场景覆盖 -->
 <section class="dark" id="scene">
   <div class="wrap">
-    <div class="sec-head"><span class="sec-no">02</span><h2 class="serif" style="color:#ece6d7;">场景覆盖</h2></div>
+    <div class="sec-head"><span class="sec-no">02</span><h2 class="serif" style="color:#ece6d7;">场景覆盖<span class="h-en" style="color:#8d8676;">Scenario Coverage</span></h2></div>
     <p class="sec-sub">单一问句即可路由至对应能力模块;复合场景自动多维联动分析。</p>
     <div class="tags">
       <span class="tag">A股并购重组</span><span class="tag">港股私有化</span><span class="tag">跨境并购</span><span class="tag">国企整合</span><span class="tag">PE / LBO</span><span class="tag">矿业并购</span><span class="tag">困境资产重组</span><span class="tag">ABS证券化</span><span class="tag">定向增发</span><span class="tag">吸收合并</span><span class="tag">跨境JV</span><span class="tag">产业基金</span>
@@ -253,7 +266,7 @@
 <!-- 03 工作流程 -->
 <section id="flow">
   <div class="wrap">
-    <div class="sec-head"><span class="sec-no">03</span><h2 class="serif">工作流程</h2></div>
+    <div class="sec-head"><span class="sec-no">03</span><h2 class="serif">工作流程<span class="h-en">Workflow</span></h2></div>
     <p class="sec-sub">每一次提问,都按投行项目组的作业标准处理——先理解场景,再锁定约束,最后交付可执行结论。</p>
     <div class="flow">
       <div class="step"><div class="no">1</div><div><h4>理解并购场景与各方诉求</h4><p>买方/卖方、行业、标的类型、交易规模</p></div></div>
@@ -271,26 +284,26 @@
 <!-- 04 使用方式 -->
 <section id="use" style="background:#f1eee6;">
   <div class="wrap">
-    <div class="sec-head"><span class="sec-no">04</span><h2 class="serif">三种使用方式</h2></div>
+    <div class="sec-head"><span class="sec-no">04</span><h2 class="serif">三种使用方式<span class="h-en">Three Ways to Access</span></h2></div>
     <p class="sec-sub">从轻到重:网页即时问答(自备API Key)→ Pro完整版(本地知识库)→ Issues专家问答(备用)。</p>
     <div class="use">
       <div class="u" style="border-top-color:#8a6d2f;background:#fbf7ec;">
         <div class="k">DESK&nbsp;·&nbsp;即时问答</div>
-        <h3 class="serif">AI Deal Desk</h3>
+        <h3 class="serif">AI Deal Desk<span>Instant Q&amp;A · BYOK</span></h3>
         <p>在下方问答面板中填入你自己的 OpenRouter API Key,选择模型,即时生成并购专家级分析。Pro用户可加载本地知识库文件夹,获得基于完整方法论的深度回答。调用直接从你的浏览器发往模型服务商,本站不经手、不存储任何密钥。</p>
         <a href="#desk">进入问答面板 →</a>
         <div class="free">模型费用由你的 Key 承担 · Key 仅保存在你自己的浏览器</div>
       </div>
       <div class="u">
         <div class="k">PRO&nbsp;·&nbsp;完整版</div>
-        <h3 class="serif">Pro 完整版(买断)</h3>
+        <h3 class="serif">Pro 完整版(买断)<span>Pro Edition · One-time</span></h3>
         <p>32 份投行级深度方法论文档 + 11 套即用交付模板(尽调清单 / 风险矩阵 / 交易时间表 / 融资 TS / LBO 模型 / 交割备忘录)。装入你自己的 AI 助手后随时调用:不限次数、无需联网、数据不出本机;亦可用于 AI Deal Desk 的本地知识库模式。</p>
         <a href="此处替换为你的面包多商品链接" target="_blank">购买 Pro(自动发货) →</a>
         <div class="free">买断制 · 仅供购买者本人使用</div>
       </div>
       <div class="u">
         <div class="k">ISSUES&nbsp;·&nbsp;备用</div>
-        <h3 class="serif">Issues 专家问答</h3>
+        <h3 class="serif">Issues 专家问答<span>Issue Q&amp;A · Backup</span></h3>
         <p>在 GitHub 仓库提交 Issue 提问,机器人自动生成结构化分析(每日 3 问)。该通道依赖 GitHub 免费推理服务,可用性受平台限制,作为 AI Deal Desk 的备用入口保留。</p>
         <a href="https://github.com/RoroXiao/ma-deal-design/issues/new" target="_blank">提交 Issue →</a>
         <div class="free">免费 · 每日 3 问 · 视平台服务可用性</div>
@@ -307,13 +320,13 @@
 
     <div class="desk-card">
       <div class="tabs">
-        <button class="tab on" id="tabGeneral" onclick="setMode('general')">通用专家问答</button>
-        <button class="tab" id="tabPro" onclick="setMode('pro')">Pro 本地知识库</button>
+        <button class="tab on" id="tabGeneral" onclick="setMode('general')">通用专家问答<i>General Expert</i></button>
+        <button class="tab" id="tabPro" onclick="setMode('pro')">Pro 本地知识库<i>Pro Knowledge Base</i></button>
       </div>
       <div class="desk-body">
 
         <div class="drow">
-          <div class="dlab">供应商</div>
+          <div class="dlab">供应商<em>Provider</em></div>
           <div class="dctl">
             <select id="providerSel" onchange="onProviderChange()">
               <option value="zhipu-cn">智谱 BigModel · 国内(open.bigmodel.cn 的 Key)</option>
@@ -324,7 +337,7 @@
         </div>
 
         <div class="drow">
-          <div class="dlab">API KEY</div>
+          <div class="dlab">API KEY<em>Key</em></div>
           <div class="dctl">
             <input type="password" id="apiKey" placeholder="sk-or-v1-…(OpenRouter Key,仅保存在本页/你的浏览器)" autocomplete="off">
             <button class="mini dark" id="eyeBtn" onclick="toggleEye()">显示</button>
@@ -336,7 +349,7 @@
         <div class="desk-note">⚠️ <b>Key 必须与所选供应商匹配</b>——智谱原厂 Key 选了 OpenRouter(或反过来)会返回 401。智谱 Key:开放平台 <b>bigmodel.cn</b> 或 <b>z.ai</b> 控制台 → API Keys;OpenRouter Key:<b>openrouter.ai</b> → Keys → Create。Key 只保存在你当前浏览器(按供应商分别记忆);勾选"记住"才写入本机 localStorage,清除按钮可随时移除。</div>
 
         <div class="drow">
-          <div class="dlab">模型</div>
+          <div class="dlab">模型<em>Model</em></div>
           <div class="dctl">
             <select id="modelSel" onchange="onModelChange()">
               <option value="glm-5.3">GLM 5.3(最新·推荐)</option>
@@ -345,8 +358,19 @@
           </div>
         </div>
 
+        <div class="drow">
+          <div class="dlab">输出形式<em>Output</em></div>
+          <div class="dctl">
+            <select id="outFormat">
+              <option value="analysis">分析报告(默认)</option>
+              <option value="ppt">HTML演示文稿(Pro专属)</option>
+            </select>
+            <span style="font-size:12px;color:var(--mut);">通用模式请求PPT将输出逐页文字大纲;Pro模式(已加载知识库)可直接生成可下载的单文件HTML演示文稿</span>
+          </div>
+        </div>
+
         <div class="drow" id="kbRow" style="display:none;">
-          <div class="dlab">知识库</div>
+          <div class="dlab">知识库<em>Knowledge Base</em></div>
           <div class="dctl">
             <span id="kbStatus" class="kb-off">未加载</span>
             <button class="mini dark" onclick="document.getElementById('kbFolder').click()">选择 references 文件夹</button>
@@ -359,7 +383,7 @@
         <div class="desk-note" id="kbNote" style="display:none;">Pro 用户专用:选择购买的 Pro 包中 <b>references 文件夹</b>(或其中全部 .md 文件)。文件仅在你本机浏览器中解析,每次提问只把与问题最相关的少量片段发给你选择的模型——文档本身不会上传到任何服务器。</div>
 
         <div class="drow" style="align-items:flex-start;">
-          <div class="dlab" style="padding-top:11px;">交易问题</div>
+          <div class="dlab" style="padding-top:11px;">交易问题<em>Question</em></div>
           <div class="dctl" style="flex-direction:column;align-items:stretch;">
             <textarea id="question" placeholder="描述你的交易场景与问题。建议包含:交易类型(控股/参股/私有化…)、买方还是卖方、管辖区(A股/港股/跨境)、当前阶段、关键约束。&#10;例:我们是买方,拟协议收购一家A股上市公司控股股东30%股权,会触发哪些监管程序?时间线怎么排?"></textarea>
           </div>
@@ -379,7 +403,7 @@
         </div>
 
         <div class="desk-hint">
-          <b>使用提示</b> · ① 通用模式即可获得专业框架级分析;② Pro 模式先加载 references 文件夹,回答将引用具体方法论文档(如 <b>hk-privatization-guide.md</b>);③ 回答仅供决策参考,不构成法律、税务或投资意见;④ 报错对照:401=Key无效或与所选供应商不匹配;402=余额不足;429=限流稍后重试;404=模型ID有误。
+          <b>使用提示</b> · ① 通用模式即可获得专业框架级分析;② Pro 模式先加载 references 文件夹,回答将引用具体方法论文档(如 <b>hk-privatization-guide.md</b>);③ 回答仅供决策参考,不构成法律、税务或投资意见;④ 报错对照:401=Key无效或与所选供应商不匹配;402=余额不足;429=限流稍后重试;404=模型ID有误;⑤ 要求PPT时:通用模式输出逐页文字大纲,Pro模式可在「输出形式」中选「HTML演示文稿」,直接生成可下载的单文件deck(浏览器打开翻页/可打印PDF)。涉及具体公司的交易,回答将以「已知事实/本次假设/待核实」分列,不编造数字。
         </div>
       </div>
     </div>
@@ -389,7 +413,7 @@
 <!-- 06 关于 -->
 <section id="about">
   <div class="wrap">
-    <div class="sec-head"><span class="sec-no">06</span><h2 class="serif">关于本服务</h2></div>
+    <div class="sec-head"><span class="sec-no">06</span><h2 class="serif">关于本服务<span class="h-en">About</span></h2></div>
     <div class="about" style="margin-top:36px;">
       <div>
         <p>本服务由资深并购从业者构建并持续维护。知识库不是静态文档:监管新规与市场实践持续入库——例如 2025 年 12 月《商业银行并购贷款管理办法》(金规〔2025〕27号)发布后,并购贷款比例、期限、银行资质等核心口径已全库同步更新。</p>
@@ -460,12 +484,16 @@ var kbChunks = [];              // [{src, text}]
 var controller = null;          // AbortController
 
 var SYSTEM_PROMPT =
-  "你是「ma-deal-design」跨境并购与结构化融资实务专家,由资深并购从业者构建的方法论体系驱动。遵守:" +
-  "1) 角色:买方/卖方双视角,投行执行级标准,输出可落地的方案与分析,不做教科书式复述;" +
-  "2) 覆盖:标的筛选、交易结构设计、估值建模、尽职调查、商务谈判、TS/SPA起草、私有化、A股并购重组、国企整合、矿业/跨境JV、PE/LBO、困境重组、ABS、跨境融资;" +
-  "3) 输出标准:正文超500字时开头给3句执行摘要(核心结论/关键风险/建议下一步,各≤20字);结构化呈现:目标→约束→关键变量→方案→风险→下一步;" +
-  "涉及数据/条款/法规时标注来源,无依据的判断标注[推断];法规可能已修订,提示核实现行有效性;按提问者角色调整颗粒度;" +
-  "4) 边界:用中文回答;不构成法律、税务或投资意见;关键数字缺失时标注[推断]或留白,不编造;若提供了参考资料,以参考资料为准,并注明所引文档名。";
+  "你是「ma-deal-design」跨境并购与结构化融资实务专家,由资深并购从业者构建的方法论体系驱动。遵守:\n" +
+  "【角色】买方/卖方双视角,投行执行级标准,输出可落地的方案与分析,不做教科书式复述。覆盖:标的筛选、交易结构设计、估值建模、尽职调查、商务谈判、TS/SPA起草、私有化、A股并购重组、国企整合、矿业/跨境JV、PE/LBO、困境重组、ABS、跨境融资。\n" +
+  "【反幻觉铁律】凡涉及具体公司、交易比例、估值金额、股权结构、融资额、监管审批状态等事实性内容:用户未提供且参考资料无明确依据时,禁止填写具体数字或确定性表述;必须使用「待核实」「假设情景」「示例结构」字样;涉及具体公司名称的交易默认进入谨慎模式——先列「待核实」清单,再按明示假设给条件化方案;不得把推断包装成事实。\n" +
+  "【信息不足】输入信息稀疏时,不连环追问:先按合理假设给条件化分析,并在开头列出「需要补充的信息」清单(按对结论的影响排序)。\n" +
+  "【输出结构】执行摘要(3句:核心结论/关键风险/建议下一步)→ 一、信息边界与关键假设(分列:已知事实/本次假设/待核实)→ 二、交易目标 → 三、监管与执行约束 → 四、方案(条件化,含优劣对比)→ 五、主要风险 → 六、下一步行动。\n" +
+  "【PPT规则】用户要求PPT/演示文稿时:仅输出逐页文字大纲,每页含:页码/标题/一句话takeaway/建议图表/数据需求;数据缺口标注[待补充],严禁编造图表数字;结尾注明「HTML演示文稿生成为Pro模式专属:加载Pro知识库并将输出形式切换为HTML演示文稿后可直接生成」。\n" +
+  "【边界】中文回答;不构成法律、税务或投资意见;法规可能已修订,提示核实现行有效性;若提供参考资料,以资料为准并注明文档名;无依据的判断标注[推断]。";
+
+var PPT_HTML_PROMPT =
+  "\n\n【当前任务:生成单文件HTML演示文稿】硬性要求:①只输出一个```html代码块,内含完整可独立运行的HTML(内联CSS/JS),代码块外不写任何解释;②16:9横版,投行深色风:墨蓝#0e1a2b底、金色#c9a45c点缀、衬线大标题;③每页一个slide区块,共8-12页:封面(标题/副标题/日期)→执行摘要→交易背景→结构方案(可多页)→监管路径→估值与对价→风险与缓释→时间表→下一步;④每页要点≤6条,右下角页码;⑤键盘←→翻页;⑥所有数据缺口标注[待补充],严禁编造任何数字;⑦内容基于用户问题与所提供知识库资料组织,关键页脚注来源文档名。";
 
 var KB_PROMPT_SUFFIX =
   "\n\n当前为Pro深度模式:下方将提供作者私有知识库中与用户问题最相关的片段。回答须以这些资料为主要依据,明确引用所依据的文档名(如【参考资料:hk-privatization-guide.md】);资料未覆盖的部分以通用专业知识回答并注明。";
@@ -665,19 +693,49 @@ function retrieve(q){
   return scored.slice(0, TOP_K).map(function(x){ return kbChunks[x[1]]; });
 }
 
+/* ---------- 进度提示与PPT ---------- */
+var progressTimer = null, progressIdx = 0;
+var progressSteps = [
+  "正在识别交易场景…",
+  "正在调取相关方法论…",
+  "正在整理监管与执行约束…",
+  "正在生成结构化方案…",
+  "长文生成中,约需1-2分钟,可随时停止…"
+];
+function startProgress(){
+  progressIdx = 0;
+  $("ansBox").textContent = progressSteps[0];
+  progressTimer = setInterval(function(){
+    progressIdx = Math.min(progressIdx + 1, progressSteps.length - 1);
+    $("ansBox").textContent = progressSteps[progressIdx];
+  }, 9000);
+}
+function stopProgress(){ if(progressTimer){ clearInterval(progressTimer); progressTimer = null; } }
+var pptHtmlCache = "";
+function downloadPPT(){
+  var blob = new Blob([pptHtmlCache], { type: "text/html" });
+  var a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "ma-deck.html";
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
 /* ---------- 生成 ---------- */
 function generate(){
   var key = $("apiKey").value.trim();
   var model = getModelId();
   var q = $("question").value.trim();
-  if(!key){ showErr("请先填入 OpenRouter API Key(见上方说明获取)。"); return; }
+  var fmt = $("outFormat").value;
+  if(!key){ showErr("请先填入 API Key(须与所选供应商匹配)。"); return; }
   if(!model){ showErr("请选择或输入模型ID。"); return; }
   if(!q){ showErr("请输入你的交易问题。"); return; }
+  if(fmt === "ppt" && mode !== "pro"){ showErr("HTML演示文稿为Pro模式专属:请切换到「Pro本地知识库」标签并加载references文件夹。通用模式下可在问题中直接要求PPT,将输出逐页文字大纲。"); return; }
   if(mode === "pro" && !kbChunks.length){ showErr("Pro模式需先加载 references 文件夹;或切回「通用专家问答」。"); return; }
   hideErr();
 
   var hits = retrieve(q);
-  var sys = SYSTEM_PROMPT + (mode === "pro" ? KB_PROMPT_SUFFIX : "");
+  var sys = SYSTEM_PROMPT + (mode === "pro" ? KB_PROMPT_SUFFIX : "") + (fmt === "ppt" ? PPT_HTML_PROMPT : "");
   var userMsg = q;
   if(mode === "pro" && hits.length){
     var ctx = hits.map(function(h,i){ return "【资料"+(i+1)+"·"+h.src+"】\n" + h.text; }).join("\n\n");
@@ -686,8 +744,8 @@ function generate(){
 
   $("answerWrap").style.display = "block";
   $("ansBox").className = "box md wait";
-  $("ansBox").textContent = "生成中…(通常10–60秒,可点停止)";
   $("ansMeta").style.display = "none";
+  startProgress();
   setBusy(true);
 
   controller = new AbortController();
@@ -702,7 +760,7 @@ function generate(){
         { role: "system", content: sys },
         { role: "user", content: userMsg }
       ],
-      max_tokens: 2200,
+      max_tokens: fmt === "ppt" ? 3800 : 1700,
       temperature: 0.3
     })
   }).then(function(r){
@@ -712,15 +770,25 @@ function generate(){
     return r.json();
   }).then(function(d){
     var ans = (d.choices && d.choices[0] && d.choices[0].message && d.choices[0].message.content) || "(空回复)";
-    setBusy(false);
-    $("ansBox").className = "box md";
-    $("ansBox").innerHTML = renderMD(ans);
-    var meta = "模型 " + model + " · 耗时 " + ((Date.now()-t0)/1000).toFixed(1) + "s";
-    if(mode === "pro") meta += " · 引用 " + hits.length + " 个知识库片段(" + hits.slice(0,3).map(function(h){ return h.src.split(" :: ")[0]; }).join(", ") + (hits.length>3?"…":"") + ")";
+    stopProgress(); setBusy(false);
+    $("ansBox").className = "box";
+    var fence = ans.match(/```html\s*\r?\n([\s\S]*?)```/i);
+    if(fmt === "ppt" && fence && fence[1].length > 200){
+      pptHtmlCache = fence[1];
+      $("ansBox").innerHTML =
+        '<div class="ppt-bar"><button class="mini" onclick="downloadPPT()">下载 .html 演示文稿</button>' +
+        '<span style="font-size:12px;color:#5b6472;">下载后双击打开,键盘←→翻页;浏览器打印(Cmd+P)可另存为PDF。</span></div>' +
+        '<iframe class="ppt-frame" sandbox="allow-scripts"></iframe>';
+      $("ansBox").querySelector("iframe").srcdoc = pptHtmlCache;
+    } else {
+      $("ansBox").innerHTML = renderMD(ans);
+    }
+    var meta = "供应商 " + PROVIDERS[provider].name + " · 模型 " + model + " · 模式 " + (mode === "pro" ? "Pro本地知识库" : "通用专家") + (fmt === "ppt" ? " · HTML演示文稿" : "") + " · 耗时 " + ((Date.now()-t0)/1000).toFixed(1) + "s";
+    if(mode === "pro" && fmt !== "ppt") meta += " · 引用 " + hits.length + " 个知识库片段(" + hits.slice(0,3).map(function(h){ return h.src.split(" :: ")[0]; }).join(", ") + (hits.length>3?"…":"") + ")";
     $("ansMeta").textContent = meta;
     $("ansMeta").style.display = "block";
   }).catch(function(e){
-    setBusy(false);
+    stopProgress(); setBusy(false);
     if(e.name === "AbortError"){
       $("ansBox").className = "box md wait";
       $("ansBox").textContent = "已停止。";
@@ -730,7 +798,7 @@ function generate(){
     }
   });
 }
-function stopGen(){ if(controller) controller.abort(); }
+function stopGen(){ stopProgress(); if(controller) controller.abort(); }
 function clearQ(){ $("question").value = ""; $("answerWrap").style.display = "none"; hideErr(); }
 function setBusy(b, busyText){
   $("genBtn").disabled = b;
