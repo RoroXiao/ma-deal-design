@@ -303,7 +303,7 @@
 <section id="desk">
   <div class="wrap">
     <div class="sec-head"><span class="sec-no">05</span><h2 class="serif">AI Deal Desk</h2></div>
-    <p class="sec-sub">自备 API Key 的即时并购问答。免费用户使用通用专家模式;Pro 用户加载本地知识库后升级为深度模式。所有调用直接从你的浏览器发往 OpenRouter(<code style="font-family:Menlo,monospace;font-size:12px;">openrouter.ai/api/v1</code>),本页面不收集、不转发、不存储任何密钥与提问。</p>
+    <p class="sec-sub">自备 API Key 的即时并购问答,支持智谱原厂与 OpenRouter 两种供应路线。免费用户使用通用专家模式;Pro 用户加载本地知识库后升级为深度模式。所有调用直接从你的浏览器发往你所选的服务商(智谱 BigModel / z.ai / OpenRouter),本页面不收集、不转发、不存储任何密钥与提问。</p>
 
     <div class="desk-card">
       <div class="tabs">
@@ -311,6 +311,17 @@
         <button class="tab" id="tabPro" onclick="setMode('pro')">Pro 本地知识库</button>
       </div>
       <div class="desk-body">
+
+        <div class="drow">
+          <div class="dlab">供应商</div>
+          <div class="dctl">
+            <select id="providerSel" onchange="onProviderChange()">
+              <option value="zhipu-cn">智谱 BigModel · 国内(open.bigmodel.cn 的 Key)</option>
+              <option value="zhipu-intl">智谱 z.ai · 国际(api.z.ai 的 Key)</option>
+              <option value="openrouter">OpenRouter · 聚合(需其平台 Key)</option>
+            </select>
+          </div>
+        </div>
 
         <div class="drow">
           <div class="dlab">API KEY</div>
@@ -322,20 +333,15 @@
             <button class="mini" onclick="clearAll()">清除Key与会话</button>
           </div>
         </div>
-        <div class="desk-note">没有 Key?打开 <b>openrouter.ai</b> → 用 GitHub 账号登录 → Keys → Create Key(需充值少量额度,或选择免费模型)。Key 只保存在你当前浏览器;勾选"记住"才会写入本机 localStorage,清除按钮可随时移除。</div>
+        <div class="desk-note">⚠️ <b>Key 必须与所选供应商匹配</b>——智谱原厂 Key 选了 OpenRouter(或反过来)会返回 401。智谱 Key:开放平台 <b>bigmodel.cn</b> 或 <b>z.ai</b> 控制台 → API Keys;OpenRouter Key:<b>openrouter.ai</b> → Keys → Create。Key 只保存在你当前浏览器(按供应商分别记忆);勾选"记住"才写入本机 localStorage,清除按钮可随时移除。</div>
 
         <div class="drow">
           <div class="dlab">模型</div>
           <div class="dctl">
             <select id="modelSel" onchange="onModelChange()">
-              <option value="z-ai/glm-5.2">GLM 5.2(推荐·深度分析强)</option>
-              <option value="z-ai/glm-5.2:free">GLM 5.2 免费版(有限额)</option>
-              <option value="deepseek/deepseek-v4-flash">DeepSeek V4 Flash(性价比)</option>
-              <option value="openai/gpt-4.1-mini">GPT-4.1 mini</option>
-              <option value="google/gemini-3.7-flash">Gemini 3.7 Flash</option>
-              <option value="custom">自定义模型ID…</option>
+              <option value="glm-5.3">GLM 5.3(最新·推荐)</option>
             </select>
-            <input type="text" id="customModel" placeholder="输入 OpenRouter 模型ID,如 z-ai/glm-5.3(上线后)" style="display:none;flex:1;min-width:220px;">
+            <input type="text" id="customModel" placeholder="输入所选供应商的模型ID,如 glm-5.3" style="display:none;flex:1;min-width:220px;">
           </div>
         </div>
 
@@ -373,7 +379,7 @@
         </div>
 
         <div class="desk-hint">
-          <b>使用提示</b> · ① 通用模式即可获得专业框架级分析;② Pro 模式先加载 references 文件夹,回答将引用具体方法论文档(如 <b>hk-privatization-guide.md</b>);③ 回答仅供决策参考,不构成法律、税务或投资意见;④ 如遇 402 请为 Key 充值,429 为限流稍后重试,404 请核对模型ID。
+          <b>使用提示</b> · ① 通用模式即可获得专业框架级分析;② Pro 模式先加载 references 文件夹,回答将引用具体方法论文档(如 <b>hk-privatization-guide.md</b>);③ 回答仅供决策参考,不构成法律、税务或投资意见;④ 报错对照:401=Key无效或与所选供应商不匹配;402=余额不足;429=限流稍后重试;404=模型ID有误。
         </div>
       </div>
     </div>
@@ -411,11 +417,45 @@
 
 <script>
 /* ================= AI Deal Desk ================= */
-var OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions";
 var CHUNK_CHARS = 1400, TOP_K = 6;
-var LS_KEY = "ma_desk_or_key";
-
-var mode = "general";           // general | pro
+var PROVIDERS = {
+  "zhipu-cn": {
+    url: "https://open.bigmodel.cn/api/paas/v4/chat/completions",
+    name: "智谱BigModel(国内)",
+    models: [
+      ["glm-5.3", "GLM 5.3(最新·推荐)"],
+      ["glm-5.2", "GLM 5.2(深度分析强)"],
+      ["glm-5.1", "GLM 5.1"],
+      ["glm-5-turbo", "GLM 5 Turbo(快)"],
+      ["custom", "自定义模型ID…"]
+    ]
+  },
+  "zhipu-intl": {
+    url: "https://api.z.ai/api/paas/v4/chat/completions",
+    name: "智谱z.ai(国际)",
+    models: [
+      ["glm-5.3", "GLM 5.3(最新·推荐)"],
+      ["glm-5.2", "GLM 5.2(深度分析强)"],
+      ["glm-5.1", "GLM 5.1"],
+      ["glm-5-turbo", "GLM 5 Turbo(快)"],
+      ["custom", "自定义模型ID…"]
+    ]
+  },
+  "openrouter": {
+    url: "https://openrouter.ai/api/v1/chat/completions",
+    name: "OpenRouter",
+    models: [
+      ["z-ai/glm-5.2", "GLM 5.2(推荐·深度分析强)"],
+      ["z-ai/glm-5.2:free", "GLM 5.2 免费版(有限额)"],
+      ["deepseek/deepseek-v4-flash", "DeepSeek V4 Flash(性价比)"],
+      ["openai/gpt-4.1-mini", "GPT-4.1 mini"],
+      ["google/gemini-3.7-flash", "Gemini 3.7 Flash"],
+      ["custom", "自定义模型ID…"]
+    ]
+  }
+};
+var provider = "zhipu-cn";     // zhipu-cn | zhipu-intl | openrouter
+var mode = "general";          // general | pro
 var kbChunks = [];              // [{src, text}]
 var controller = null;          // AbortController
 
@@ -442,6 +482,32 @@ function setMode(m){
   $("kbNote").style.display = (m==="pro") ? "block" : "none";
 }
 
+/* ---------- 供应商 ---------- */
+function apiUrl(){ return PROVIDERS[provider].url; }
+function lsKey(){ return "ma_desk_key_" + provider; }
+function populateModels(){
+  var sel = $("modelSel");
+  sel.innerHTML = "";
+  PROVIDERS[provider].models.forEach(function(m){
+    var o = document.createElement("option");
+    o.value = m[0]; o.textContent = m[1];
+    sel.appendChild(o);
+  });
+  $("customModel").style.display = "none";
+  $("customModel").value = "";
+}
+function onProviderChange(){
+  var old = provider;
+  if($("rememberKey").checked && $("apiKey").value.trim()){
+    localStorage.setItem("ma_desk_key_" + old, $("apiKey").value.trim());
+  }
+  provider = $("providerSel").value;
+  populateModels();
+  var saved = localStorage.getItem(lsKey());
+  $("apiKey").value = saved || "";
+  $("rememberKey").checked = !!saved;
+}
+
 /* ---------- Key 管理 ---------- */
 function toggleEye(){
   var k = $("apiKey");
@@ -451,21 +517,26 @@ function toggleEye(){
 function onRememberChange(){
   if($("rememberKey").checked){
     var v = $("apiKey").value.trim();
-    if(v) localStorage.setItem(LS_KEY, v);
+    if(v) localStorage.setItem(lsKey(), v);
   } else {
-    localStorage.removeItem(LS_KEY);
+    localStorage.removeItem(lsKey());
   }
 }
 function clearAll(){
-  localStorage.removeItem(LS_KEY);
+  ["zhipu-cn","zhipu-intl","openrouter"].forEach(function(p){
+    localStorage.removeItem("ma_desk_key_" + p);
+  });
+  localStorage.removeItem("ma_desk_or_key"); // 旧版本残留
   $("apiKey").value = "";
   $("rememberKey").checked = false;
   $("question").value = "";
   $("answerWrap").style.display = "none";
   $("deskErr").style.display = "none";
 }
-(function restoreKey(){
-  var saved = localStorage.getItem(LS_KEY);
+(function initDesk(){
+  $("providerSel").value = provider;
+  populateModels();
+  var saved = localStorage.getItem(lsKey());
   if(saved){ $("apiKey").value = saved; $("rememberKey").checked = true; }
 })();
 
@@ -489,23 +560,26 @@ function testConn(){
   if(!model){ showErr("请先选择或输入模型ID。"); return; }
   hideErr();
   setBusy(true, "测试连接中…");
-  fetch(OPENROUTER_URL, {
+  fetch(apiUrl(), {
     method: "POST",
     headers: authHeaders(key),
     body: JSON.stringify({ model: model, messages: [{role:"user", content:"ping"}], max_tokens: 1 })
   }).then(function(r){
     setBusy(false);
-    if(r.ok){ alert("✓ 连接成功:" + model + " 可用(消耗约1 token)。"); }
+    if(r.ok){ alert("✓ 连接成功:" + PROVIDERS[provider].name + " · " + model + " 可用(消耗约1 token)。"); }
     else { r.json().then(function(d){ showErr("连接失败(HTTP " + r.status + "):" + errText(d)); }).catch(function(){ showErr("连接失败(HTTP " + r.status + ")。"); }); }
   }).catch(function(e){ setBusy(false); showErr("网络错误:" + e.message + "。请检查网络或代理。"); });
 }
 function authHeaders(key){
-  return {
+  var h = {
     "Authorization": "Bearer " + key,
-    "Content-Type": "application/json",
-    "HTTP-Referer": location.origin,
-    "X-Title": "MA Deal Design"
+    "Content-Type": "application/json"
   };
+  if(provider === "openrouter"){
+    h["HTTP-Referer"] = location.origin;
+    h["X-Title"] = "MA Deal Design";
+  }
+  return h;
 }
 
 /* ---------- 本地知识库 ---------- */
@@ -618,7 +692,7 @@ function generate(){
 
   controller = new AbortController();
   var t0 = Date.now();
-  fetch(OPENROUTER_URL, {
+  fetch(apiUrl(), {
     method: "POST",
     headers: authHeaders(key),
     signal: controller.signal,
@@ -651,7 +725,7 @@ function generate(){
       $("ansBox").className = "box md wait";
       $("ansBox").textContent = "已停止。";
     } else {
-      showErr("生成失败:" + e.message + "。402=Key余额不足;429=限流稍后重试;404=模型ID有误;401=Key无效。");
+      showErr("生成失败:" + e.message + "。401=Key无效或与所选供应商不匹配(智谱Key请选智谱供应商);402=Key余额不足;429=限流稍后重试;404=模型ID有误。");
       $("answerWrap").style.display = "none";
     }
   });
