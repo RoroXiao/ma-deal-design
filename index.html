@@ -20,7 +20,7 @@
   nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;}
   .brand{color:#f2ede1;font-size:15px;letter-spacing:.14em;font-weight:600;text-decoration:none;}
   .brand b{color:var(--gold-l);font-weight:600;}
-  nav .links{display:flex;gap:28px;}
+  nav .links{display:flex;gap:26px;}
   nav .links a{color:#c9c3b4;font-size:13px;text-decoration:none;letter-spacing:.08em;transition:color .2s;}
   nav .links a:hover{color:var(--gold-l);}
 
@@ -34,12 +34,12 @@
   .hero-desc{max-width:760px;margin-top:26px;font-size:15.5px;line-height:1.95;color:#b9b2a2;}
   .hero-desc em{color:#e8e2d3;font-style:normal;}
   .cta{margin-top:40px;display:flex;gap:16px;flex-wrap:wrap;}
-  .btn{display:inline-block;padding:14px 30px;font-size:14.5px;letter-spacing:.06em;text-decoration:none;transition:all .2s;border:1px solid transparent;}
+  .btn{display:inline-block;padding:14px 30px;font-size:14.5px;letter-spacing:.06em;text-decoration:none;transition:all .2s;border:1px solid transparent;cursor:pointer;font-family:inherit;}
   .btn-solid{background:var(--gold);color:#101a28;font-weight:600;}
   .btn-solid:hover{background:var(--gold-l);transform:translateY(-1px);}
-  .btn-ghost{border-color:rgba(201,164,92,.55);color:#eadfca;}
+  .btn-ghost{border-color:rgba(201,164,92,.55);color:#eadfca;background:transparent;}
   .btn-ghost:hover{border-color:var(--gold-l);color:#fff;}
-  .stats{margin-top:56px;display:flex;gap:0;border-top:1px solid rgba(201,164,92,.25);padding-top:28px;flex-wrap:wrap;}
+  .stats{margin-top:56px;display:flex;border-top:1px solid rgba(201,164,92,.25);padding-top:28px;flex-wrap:wrap;}
   .stat{padding-right:56px;margin-right:56px;border-right:1px solid rgba(201,164,92,.18);}
   .stat:last-child{border-right:none;}
   .stat .n{font-size:30px;color:var(--gold-l);}
@@ -91,6 +91,55 @@
   .u a{margin-top:22px;font-size:13.5px;color:var(--ink);text-decoration:none;font-weight:600;border-bottom:1px solid var(--gold);padding-bottom:3px;align-self:flex-start;transition:color .2s;}
   .u a:hover{color:var(--gold);}
   .u .free{font-size:11.5px;color:#7a8494;margin-top:8px;}
+  .u.pro{border-top-color:#8a6d2f;background:#fbf7ec;}
+
+  /* ---------- AI DEAL DESK ---------- */
+  #desk{background:#f1eee6;}
+  .desk-card{background:var(--card);border:1px solid var(--line);box-shadow:0 18px 44px rgba(14,26,43,.08);}
+  .tabs{display:flex;border-bottom:1px solid var(--line);}
+  .tab{flex:1;padding:18px 10px;text-align:center;font-size:14.5px;letter-spacing:.08em;color:var(--mut);cursor:pointer;background:#f4f1e9;border-right:1px solid var(--line);transition:all .2s;font-family:inherit;}
+  .tab:last-child{border-right:none;}
+  .tab.on{background:var(--card);color:var(--ink);font-weight:700;box-shadow:inset 0 3px 0 var(--gold);}
+  .desk-body{padding:34px 36px 30px;}
+  .drow{display:flex;gap:14px;align-items:center;margin-bottom:16px;flex-wrap:wrap;}
+  .dlab{flex:0 0 110px;font-size:12.5px;letter-spacing:.14em;color:var(--mut);}
+  .dctl{flex:1;min-width:240px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+  input[type=password],input[type=text],select,textarea{font-family:inherit;font-size:13.5px;color:#e9e3d4;background:var(--ink);border:1px solid #2c3f59;padding:11px 14px;outline:none;transition:border .2s;}
+  input:focus,select:focus,textarea:focus{border-color:var(--gold-l);}
+  input[type=password],input[type=text]{flex:1;min-width:200px;}
+  select{cursor:pointer;}
+  textarea{width:100%;min-height:130px;resize:vertical;line-height:1.8;}
+  textarea::placeholder,input::placeholder{color:#77839a;}
+  .mini{font-size:12px;padding:8px 14px;letter-spacing:.05em;background:transparent;border:1px solid var(--line);color:var(--mut);cursor:pointer;transition:all .2s;font-family:inherit;}
+  .mini:hover{border-color:var(--gold);color:var(--gold);}
+  .mini.dark{border-color:#3a4d68;color:#aab4c6;}
+  .mini.dark:hover{border-color:var(--gold-l);color:var(--gold-l);}
+  .chk{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--mut);cursor:pointer;user-select:none;}
+  .chk input{accent-color:var(--gold);}
+  .kb-on{font-size:12.5px;color:#3f6b4a;background:#eef3ec;border:1px solid #cfdccf;padding:7px 12px;}
+  .kb-off{font-size:12.5px;color:#8b6a2f;background:#f6efdd;border:1px solid #e3d2a8;padding:7px 12px;}
+  .desk-note{font-size:11.8px;color:#8d94a1;line-height:1.8;margin:6px 0 18px;}
+  .desk-btns{display:flex;gap:12px;margin-top:16px;flex-wrap:wrap;}
+  .btn:disabled{opacity:.45;cursor:not-allowed;transform:none;}
+  .btn-stop{background:transparent;border:1px solid #a33b3b;color:#a33b3b;}
+  .btn-stop:hover{background:#a33b3b;color:#fff;}
+  .ans-meta{font-size:12px;color:var(--mut);letter-spacing:.04em;margin-top:22px;padding-top:14px;border-top:1px solid var(--line);display:none;}
+  .answer{margin-top:18px;display:none;}
+  .answer .box{border:1px solid var(--line);background:#fbfaf6;padding:26px 30px;font-size:13.8px;line-height:2.0;color:#333c49;min-height:60px;}
+  .answer .box.wait{color:#98917f;letter-spacing:.06em;}
+  /* 简易Markdown渲染 */
+  .md h3,.md h4{margin:18px 0 8px;letter-spacing:.03em;}
+  .md h3{font-size:16px;} .md h4{font-size:14.5px;}
+  .md p{margin:8px 0;}
+  .md ul,.md ol{margin:8px 0 8px 22px;}
+  .md li{margin:4px 0;}
+  .md code{font-family:Menlo,Consolas,monospace;font-size:12.5px;background:#efece3;padding:1px 6px;border:1px solid var(--line);}
+  .md strong{color:var(--ink);}
+  .md hr{border:none;border-top:1px solid var(--line);margin:14px 0;}
+  .md blockquote{border-left:3px solid var(--gold-l);padding-left:14px;color:var(--mut);margin:10px 0;}
+  .desk-err{display:none;margin-top:14px;font-size:13px;color:#a33b3b;background:#f9efec;border:1px solid #e6c8c2;padding:12px 16px;line-height:1.8;}
+  .desk-hint{margin-top:22px;font-size:12.3px;color:var(--mut);line-height:1.9;border-top:1px dashed var(--line);padding-top:16px;}
+  .desk-hint b{color:var(--ink);}
 
   /* ---------- 关于 ---------- */
   .about{display:grid;grid-template-columns:1.2fr .8fr;gap:44px;}
@@ -112,6 +161,8 @@
     .stat{padding-right:28px;margin-right:28px;}
     section{padding:56px 0;}
     header{padding:64px 0 56px;}
+    .desk-body{padding:24px 20px;}
+    .dlab{flex:0 0 100%;}
   }
 </style>
 </head>
@@ -121,7 +172,7 @@
   <div class="wrap">
     <a class="brand serif" href="#top">MA&nbsp;DEAL&nbsp;<b>DESIGN</b></a>
     <div class="links">
-      <a href="#stack">核心能力栈</a><a href="#scene">场景覆盖</a><a href="#flow">工作流程</a><a href="#use">使用方式</a><a href="#about">关于</a>
+      <a href="#stack">核心能力栈</a><a href="#scene">场景覆盖</a><a href="#flow">工作流程</a><a href="#use">使用方式</a><a href="#desk">AI问答</a><a href="#about">关于</a>
     </div>
   </div>
 </nav>
@@ -134,7 +185,7 @@
     </h1>
     <p class="hero-desc">覆盖<em>标的筛选、交易结构设计、估值建模、尽职调查、商务谈判、交易文件起草与投后整合</em>全流程。当您需要<em>投行级别的并购分析、估值方案、尽调框架或谈判策略</em>,或涉及 A股 / 港股 / 跨境 / 国企 / PE / LBO / 矿业 / 困境资产重组 / ABS 等复杂交易场景时使用。</p>
     <div class="cta">
-      <a class="btn btn-solid" href="https://github.com/RoroXiao/ma-deal-design/issues/new" target="_blank">免费提问 · 专家问答</a>
+      <a class="btn btn-solid" href="#desk">AI Deal Desk · 即时问答</a>
       <a class="btn btn-ghost" href="#use">获取 Pro 完整版</a>
     </div>
     <div class="stats">
@@ -221,37 +272,118 @@
 <section id="use" style="background:#f1eee6;">
   <div class="wrap">
     <div class="sec-head"><span class="sec-no">04</span><h2 class="serif">三种使用方式</h2></div>
-    <p class="sec-sub">从轻到重:网页即时提问 → 本地轻量版 → Pro 完整版,按需选择。</p>
+    <p class="sec-sub">从轻到重:网页即时问答(自备API Key)→ Pro完整版(本地知识库)→ Issues专家问答(备用)。</p>
     <div class="use">
-      <div class="u">
-        <div class="k">FREE&nbsp;·&nbsp;网页提问</div>
-        <h3 class="serif">专家问答(Issues)</h3>
-        <p>在 GitHub 仓库提交问题,机器人基于作者全量私有知识库生成结构化专家分析:场景诊断、方案对比、风险提示、监管路径,1–2 分钟内回复。</p>
-        <a href="https://github.com/RoroXiao/ma-deal-design/issues/new" target="_blank">立即提问 →</a>
-        <div class="free">免费 · 每日 3 问</div>
-      </div>
-      <div class="u">
-        <div class="k">LITE&nbsp;·&nbsp;本地安装</div>
-        <h3 class="serif">轻量版 Skill</h3>
-        <p>将 lite 版技能包装入你的 AI 编程助手(ZCode / Claude Code 等),获得通用并购方法论支持(NDA 审查 / 尽调清单 / 风险分级 / 时间表 / PMO / 投后),深度问题自动引导至专家问答。</p>
-        <a href="https://github.com/RoroXiao/ma-deal-design" target="_blank">查看安装说明 →</a>
-        <div class="free">免费 · 完全本地运行</div>
-      </div>
       <div class="u" style="border-top-color:#8a6d2f;background:#fbf7ec;">
+        <div class="k">DESK&nbsp;·&nbsp;即时问答</div>
+        <h3 class="serif">AI Deal Desk</h3>
+        <p>在下方问答面板中填入你自己的 OpenRouter API Key,选择模型,即时生成并购专家级分析。Pro用户可加载本地知识库文件夹,获得基于完整方法论的深度回答。调用直接从你的浏览器发往模型服务商,本站不经手、不存储任何密钥。</p>
+        <a href="#desk">进入问答面板 →</a>
+        <div class="free">模型费用由你的 Key 承担 · Key 仅保存在你自己的浏览器</div>
+      </div>
+      <div class="u">
         <div class="k">PRO&nbsp;·&nbsp;完整版</div>
         <h3 class="serif">Pro 完整版(买断)</h3>
-        <p>32 份投行级深度方法论文档 + 11 套即用交付模板(尽调清单 / 风险矩阵 / 交易时间表 / 融资 TS / LBO 模型 / 交割备忘录)。装入你自己的 AI 助手后随时调用:不限次数、无需联网、数据不出本机。</p>
+        <p>32 份投行级深度方法论文档 + 11 套即用交付模板(尽调清单 / 风险矩阵 / 交易时间表 / 融资 TS / LBO 模型 / 交割备忘录)。装入你自己的 AI 助手后随时调用:不限次数、无需联网、数据不出本机;亦可用于 AI Deal Desk 的本地知识库模式。</p>
         <a href="此处替换为你的面包多商品链接" target="_blank">购买 Pro(自动发货) →</a>
         <div class="free">买断制 · 仅供购买者本人使用</div>
+      </div>
+      <div class="u">
+        <div class="k">ISSUES&nbsp;·&nbsp;备用</div>
+        <h3 class="serif">Issues 专家问答</h3>
+        <p>在 GitHub 仓库提交 Issue 提问,机器人自动生成结构化分析(每日 3 问)。该通道依赖 GitHub 免费推理服务,可用性受平台限制,作为 AI Deal Desk 的备用入口保留。</p>
+        <a href="https://github.com/RoroXiao/ma-deal-design/issues/new" target="_blank">提交 Issue →</a>
+        <div class="free">免费 · 每日 3 问 · 视平台服务可用性</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 05 关于 -->
+<!-- 05 AI DEAL DESK -->
+<section id="desk">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-no">05</span><h2 class="serif">AI Deal Desk</h2></div>
+    <p class="sec-sub">自备 API Key 的即时并购问答。免费用户使用通用专家模式;Pro 用户加载本地知识库后升级为深度模式。所有调用直接从你的浏览器发往 OpenRouter(<code style="font-family:Menlo,monospace;font-size:12px;">openrouter.ai/api/v1</code>),本页面不收集、不转发、不存储任何密钥与提问。</p>
+
+    <div class="desk-card">
+      <div class="tabs">
+        <button class="tab on" id="tabGeneral" onclick="setMode('general')">通用专家问答</button>
+        <button class="tab" id="tabPro" onclick="setMode('pro')">Pro 本地知识库</button>
+      </div>
+      <div class="desk-body">
+
+        <div class="drow">
+          <div class="dlab">API KEY</div>
+          <div class="dctl">
+            <input type="password" id="apiKey" placeholder="sk-or-v1-…(OpenRouter Key,仅保存在本页/你的浏览器)" autocomplete="off">
+            <button class="mini dark" id="eyeBtn" onclick="toggleEye()">显示</button>
+            <button class="mini dark" onclick="testConn()">测试连接</button>
+            <label class="chk"><input type="checkbox" id="rememberKey" onchange="onRememberChange()">记住Key(存于本机浏览器)</label>
+            <button class="mini" onclick="clearAll()">清除Key与会话</button>
+          </div>
+        </div>
+        <div class="desk-note">没有 Key?打开 <b>openrouter.ai</b> → 用 GitHub 账号登录 → Keys → Create Key(需充值少量额度,或选择免费模型)。Key 只保存在你当前浏览器;勾选"记住"才会写入本机 localStorage,清除按钮可随时移除。</div>
+
+        <div class="drow">
+          <div class="dlab">模型</div>
+          <div class="dctl">
+            <select id="modelSel" onchange="onModelChange()">
+              <option value="z-ai/glm-5.2">GLM 5.2(推荐·深度分析强)</option>
+              <option value="z-ai/glm-5.2:free">GLM 5.2 免费版(有限额)</option>
+              <option value="deepseek/deepseek-v4-flash">DeepSeek V4 Flash(性价比)</option>
+              <option value="openai/gpt-4.1-mini">GPT-4.1 mini</option>
+              <option value="google/gemini-3.7-flash">Gemini 3.7 Flash</option>
+              <option value="custom">自定义模型ID…</option>
+            </select>
+            <input type="text" id="customModel" placeholder="输入 OpenRouter 模型ID,如 z-ai/glm-5.3(上线后)" style="display:none;flex:1;min-width:220px;">
+          </div>
+        </div>
+
+        <div class="drow" id="kbRow" style="display:none;">
+          <div class="dlab">知识库</div>
+          <div class="dctl">
+            <span id="kbStatus" class="kb-off">未加载</span>
+            <button class="mini dark" onclick="document.getElementById('kbFolder').click()">选择 references 文件夹</button>
+            <button class="mini dark" onclick="document.getElementById('kbFiles').click()">或选择多个 .md 文件</button>
+            <button class="mini" onclick="unloadKB()">卸载</button>
+            <input type="file" id="kbFolder" webkitdirectory multiple style="display:none" onchange="loadKB(this.files)">
+            <input type="file" id="kbFiles" accept=".md,.markdown" multiple style="display:none" onchange="loadKB(this.files)">
+          </div>
+        </div>
+        <div class="desk-note" id="kbNote" style="display:none;">Pro 用户专用:选择购买的 Pro 包中 <b>references 文件夹</b>(或其中全部 .md 文件)。文件仅在你本机浏览器中解析,每次提问只把与问题最相关的少量片段发给你选择的模型——文档本身不会上传到任何服务器。</div>
+
+        <div class="drow" style="align-items:flex-start;">
+          <div class="dlab" style="padding-top:11px;">交易问题</div>
+          <div class="dctl" style="flex-direction:column;align-items:stretch;">
+            <textarea id="question" placeholder="描述你的交易场景与问题。建议包含:交易类型(控股/参股/私有化…)、买方还是卖方、管辖区(A股/港股/跨境)、当前阶段、关键约束。&#10;例:我们是买方,拟协议收购一家A股上市公司控股股东30%股权,会触发哪些监管程序?时间线怎么排?"></textarea>
+          </div>
+        </div>
+
+        <div class="desk-btns">
+          <button class="btn btn-solid" id="genBtn" onclick="generate()">生成分析</button>
+          <button class="btn btn-stop" id="stopBtn" onclick="stopGen()" style="display:none;">停止</button>
+          <button class="btn btn-ghost" style="color:#5b6472;border-color:#c9c2b2;" onclick="clearQ()">清空</button>
+        </div>
+
+        <div class="desk-err" id="deskErr"></div>
+
+        <div class="answer" id="answerWrap">
+          <div class="ans-meta" id="ansMeta"></div>
+          <div class="box md" id="ansBox"></div>
+        </div>
+
+        <div class="desk-hint">
+          <b>使用提示</b> · ① 通用模式即可获得专业框架级分析;② Pro 模式先加载 references 文件夹,回答将引用具体方法论文档(如 <b>hk-privatization-guide.md</b>);③ 回答仅供决策参考,不构成法律、税务或投资意见;④ 如遇 402 请为 Key 充值,429 为限流稍后重试,404 请核对模型ID。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 关于 -->
 <section id="about">
   <div class="wrap">
-    <div class="sec-head"><span class="sec-no">05</span><h2 class="serif">关于本服务</h2></div>
+    <div class="sec-head"><span class="sec-no">06</span><h2 class="serif">关于本服务</h2></div>
     <div class="about" style="margin-top:36px;">
       <div>
         <p>本服务由资深并购从业者构建并持续维护。知识库不是静态文档:监管新规与市场实践持续入库——例如 2025 年 12 月《商业银行并购贷款管理办法》(金规〔2025〕27号)发布后,并购贷款比例、期限、银行资质等核心口径已全库同步更新。</p>
@@ -264,6 +396,7 @@
         <li>禁止未经授权的转售与批量抓取转存</li>
         <li>公开部分采用 CC BY-NC-SA 4.0 授权</li>
         <li>问答与 Pro 内容版权归作者所有</li>
+        <li>AI Deal Desk 不收集任何密钥与提问</li>
       </div>
     </div>
   </div>
@@ -272,9 +405,305 @@
 <footer>
   <div class="wrap">
     <div>© 2026 Rosheen_X · MA DEAL DESIGN</div>
-    <div><a href="https://github.com/RoroXiao/ma-deal-design" target="_blank">GitHub</a>&nbsp;&nbsp;·&nbsp;&nbsp;<a href="https://github.com/RoroXiao/ma-deal-design/issues/new" target="_blank">提问</a></div>
+    <div><a href="https://github.com/RoroXiao/ma-deal-design" target="_blank">GitHub</a>&nbsp;&nbsp;·&nbsp;&nbsp;<a href="#desk">AI问答</a>&nbsp;&nbsp;·&nbsp;&nbsp;<a href="https://github.com/RoroXiao/ma-deal-design/issues/new" target="_blank">Issues提问</a></div>
   </div>
 </footer>
+
+<script>
+/* ================= AI Deal Desk ================= */
+var OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions";
+var CHUNK_CHARS = 1400, TOP_K = 6;
+var LS_KEY = "ma_desk_or_key";
+
+var mode = "general";           // general | pro
+var kbChunks = [];              // [{src, text}]
+var controller = null;          // AbortController
+
+var SYSTEM_PROMPT =
+  "你是「ma-deal-design」跨境并购与结构化融资实务专家,由资深并购从业者构建的方法论体系驱动。遵守:" +
+  "1) 角色:买方/卖方双视角,投行执行级标准,输出可落地的方案与分析,不做教科书式复述;" +
+  "2) 覆盖:标的筛选、交易结构设计、估值建模、尽职调查、商务谈判、TS/SPA起草、私有化、A股并购重组、国企整合、矿业/跨境JV、PE/LBO、困境重组、ABS、跨境融资;" +
+  "3) 输出标准:正文超500字时开头给3句执行摘要(核心结论/关键风险/建议下一步,各≤20字);结构化呈现:目标→约束→关键变量→方案→风险→下一步;" +
+  "涉及数据/条款/法规时标注来源,无依据的判断标注[推断];法规可能已修订,提示核实现行有效性;按提问者角色调整颗粒度;" +
+  "4) 边界:用中文回答;不构成法律、税务或投资意见;关键数字缺失时标注[推断]或留白,不编造;若提供了参考资料,以参考资料为准,并注明所引文档名。";
+
+var KB_PROMPT_SUFFIX =
+  "\n\n当前为Pro深度模式:下方将提供作者私有知识库中与用户问题最相关的片段。回答须以这些资料为主要依据,明确引用所依据的文档名(如【参考资料:hk-privatization-guide.md】);资料未覆盖的部分以通用专业知识回答并注明。";
+
+/* ---------- DOM ---------- */
+function $(id){ return document.getElementById(id); }
+
+/* ---------- 模式切换 ---------- */
+function setMode(m){
+  mode = m;
+  $("tabGeneral").className = "tab" + (m==="general" ? " on" : "");
+  $("tabPro").className = "tab" + (m==="pro" ? " on" : "");
+  $("kbRow").style.display = (m==="pro") ? "flex" : "none";
+  $("kbNote").style.display = (m==="pro") ? "block" : "none";
+}
+
+/* ---------- Key 管理 ---------- */
+function toggleEye(){
+  var k = $("apiKey");
+  if(k.type === "password"){ k.type = "text"; $("eyeBtn").textContent = "隐藏"; }
+  else { k.type = "password"; $("eyeBtn").textContent = "显示"; }
+}
+function onRememberChange(){
+  if($("rememberKey").checked){
+    var v = $("apiKey").value.trim();
+    if(v) localStorage.setItem(LS_KEY, v);
+  } else {
+    localStorage.removeItem(LS_KEY);
+  }
+}
+function clearAll(){
+  localStorage.removeItem(LS_KEY);
+  $("apiKey").value = "";
+  $("rememberKey").checked = false;
+  $("question").value = "";
+  $("answerWrap").style.display = "none";
+  $("deskErr").style.display = "none";
+}
+(function restoreKey(){
+  var saved = localStorage.getItem(LS_KEY);
+  if(saved){ $("apiKey").value = saved; $("rememberKey").checked = true; }
+})();
+
+/* ---------- 模型 ---------- */
+function getModelId(){
+  var v = $("modelSel").value;
+  if(v === "custom"){
+    return $("customModel").value.trim();
+  }
+  return v;
+}
+function onModelChange(){
+  $("customModel").style.display = ($("modelSel").value === "custom") ? "block" : "none";
+}
+
+/* ---------- 连接测试 ---------- */
+function testConn(){
+  var key = $("apiKey").value.trim();
+  var model = getModelId();
+  if(!key){ showErr("请先填入 OpenRouter API Key。"); return; }
+  if(!model){ showErr("请先选择或输入模型ID。"); return; }
+  hideErr();
+  setBusy(true, "测试连接中…");
+  fetch(OPENROUTER_URL, {
+    method: "POST",
+    headers: authHeaders(key),
+    body: JSON.stringify({ model: model, messages: [{role:"user", content:"ping"}], max_tokens: 1 })
+  }).then(function(r){
+    setBusy(false);
+    if(r.ok){ alert("✓ 连接成功:" + model + " 可用(消耗约1 token)。"); }
+    else { r.json().then(function(d){ showErr("连接失败(HTTP " + r.status + "):" + errText(d)); }).catch(function(){ showErr("连接失败(HTTP " + r.status + ")。"); }); }
+  }).catch(function(e){ setBusy(false); showErr("网络错误:" + e.message + "。请检查网络或代理。"); });
+}
+function authHeaders(key){
+  return {
+    "Authorization": "Bearer " + key,
+    "Content-Type": "application/json",
+    "HTTP-Referer": location.origin,
+    "X-Title": "MA Deal Design"
+  };
+}
+
+/* ---------- 本地知识库 ---------- */
+function loadKB(fileList){
+  var files = [];
+  for(var i=0;i<fileList.length;i++){
+    var f = fileList[i];
+    if(/\.(md|markdown)$/i.test(f.name)) files.push(f);
+  }
+  if(!files.length){ showErr("未找到 .md 文件——请选择 Pro 包中的 references 文件夹。"); return; }
+  kbChunks = [];
+  var done = 0, totalChars = 0;
+  files.forEach(function(f){
+    var reader = new FileReader();
+    reader.onload = function(){
+      var text = reader.result || "";
+      totalChars += text.length;
+      chunkFile(f.name, text);
+      done++;
+      if(done === files.length){
+        $("kbStatus").className = "kb-on";
+        $("kbStatus").textContent = "已加载 " + files.length + " 份文档 · " + kbChunks.length + " 个片段 · " + Math.round(totalChars/1000) + "K 字符";
+        hideErr();
+      }
+    };
+    reader.readAsText(f);
+  });
+  $("kbStatus").className = "kb-off";
+  $("kbStatus").textContent = "加载中…";
+}
+function unloadKB(){
+  kbChunks = [];
+  $("kbStatus").className = "kb-off";
+  $("kbStatus").textContent = "未加载";
+}
+function chunkFile(name, text){
+  var lines = text.split(/\r?\n/);
+  var heading = name.replace(/\.(md|markdown)$/i,""), buf = [], size = 0;
+  for(var i=0;i<lines.length;i++){
+    var ln = lines[i];
+    if(/^#{1,3} /.test(ln) && size > CHUNK_CHARS * 0.6){
+      pushChunk(heading, buf);
+      heading = name + " :: " + ln.replace(/^#+\s*/,"").slice(0,40);
+      buf = []; size = 0;
+    }
+    buf.push(ln); size += ln.length;
+  }
+  pushChunk(heading, buf);
+  function pushChunk(h, b){
+    var t = b.join("\n").trim();
+    if(t) kbChunks.push({ src: h, text: t });
+  }
+}
+/* 二元组IDF检索(与Issues机器人同算法) */
+function tokenize(s){
+  var out = {}, m, re = /[a-zA-Z0-9]+|[\u4e00-\u9fff]+/g, low = s.toLowerCase();
+  while((m = re.exec(low)) !== null){
+    var t = m[0];
+    if(/[\u4e00-\u9fff]/.test(t.charAt(0))){
+      for(var i=0;i<t.length-1;i++) out[t.substr(i,2)] = 1;
+    } else out[t] = 1;
+  }
+  return Object.keys(out);
+}
+function retrieve(q){
+  if(!kbChunks.length) return [];
+  var qt = tokenize(q);
+  if(!qt.length) return [];
+  var df = {}, sets = [];
+  kbChunks.forEach(function(c){
+    var s = tokenize(c.text); var o = {};
+    s.forEach(function(t){ o[t]=1; });
+    sets.push(o);
+    for(var t in o) df[t] = (df[t]||0) + 1;
+  });
+  var n = kbChunks.length, scored = [];
+  sets.forEach(function(o, i){
+    var sc = 0;
+    qt.forEach(function(t){ if(o[t] && df[t] < n) sc += Math.log(n/df[t]); });
+    if(sc > 0) scored.push([sc, i]);
+  });
+  scored.sort(function(a,b){ return b[0]-a[0]; });
+  return scored.slice(0, TOP_K).map(function(x){ return kbChunks[x[1]]; });
+}
+
+/* ---------- 生成 ---------- */
+function generate(){
+  var key = $("apiKey").value.trim();
+  var model = getModelId();
+  var q = $("question").value.trim();
+  if(!key){ showErr("请先填入 OpenRouter API Key(见上方说明获取)。"); return; }
+  if(!model){ showErr("请选择或输入模型ID。"); return; }
+  if(!q){ showErr("请输入你的交易问题。"); return; }
+  if(mode === "pro" && !kbChunks.length){ showErr("Pro模式需先加载 references 文件夹;或切回「通用专家问答」。"); return; }
+  hideErr();
+
+  var hits = retrieve(q);
+  var sys = SYSTEM_PROMPT + (mode === "pro" ? KB_PROMPT_SUFFIX : "");
+  var userMsg = q;
+  if(mode === "pro" && hits.length){
+    var ctx = hits.map(function(h,i){ return "【资料"+(i+1)+"·"+h.src+"】\n" + h.text; }).join("\n\n");
+    userMsg = q + "\n\n内部参考资料(仅供组织答案,注明依据文档):\n" + ctx;
+  }
+
+  $("answerWrap").style.display = "block";
+  $("ansBox").className = "box md wait";
+  $("ansBox").textContent = "生成中…(通常10–60秒,可点停止)";
+  $("ansMeta").style.display = "none";
+  setBusy(true);
+
+  controller = new AbortController();
+  var t0 = Date.now();
+  fetch(OPENROUTER_URL, {
+    method: "POST",
+    headers: authHeaders(key),
+    signal: controller.signal,
+    body: JSON.stringify({
+      model: model,
+      messages: [
+        { role: "system", content: sys },
+        { role: "user", content: userMsg }
+      ],
+      max_tokens: 2200,
+      temperature: 0.3
+    })
+  }).then(function(r){
+    if(!r.ok){
+      return r.json().then(function(d){ throw new Error("HTTP " + r.status + " · " + errText(d)); });
+    }
+    return r.json();
+  }).then(function(d){
+    var ans = (d.choices && d.choices[0] && d.choices[0].message && d.choices[0].message.content) || "(空回复)";
+    setBusy(false);
+    $("ansBox").className = "box md";
+    $("ansBox").innerHTML = renderMD(ans);
+    var meta = "模型 " + model + " · 耗时 " + ((Date.now()-t0)/1000).toFixed(1) + "s";
+    if(mode === "pro") meta += " · 引用 " + hits.length + " 个知识库片段(" + hits.slice(0,3).map(function(h){ return h.src.split(" :: ")[0]; }).join(", ") + (hits.length>3?"…":"") + ")";
+    $("ansMeta").textContent = meta;
+    $("ansMeta").style.display = "block";
+  }).catch(function(e){
+    setBusy(false);
+    if(e.name === "AbortError"){
+      $("ansBox").className = "box md wait";
+      $("ansBox").textContent = "已停止。";
+    } else {
+      showErr("生成失败:" + e.message + "。402=Key余额不足;429=限流稍后重试;404=模型ID有误;401=Key无效。");
+      $("answerWrap").style.display = "none";
+    }
+  });
+}
+function stopGen(){ if(controller) controller.abort(); }
+function clearQ(){ $("question").value = ""; $("answerWrap").style.display = "none"; hideErr(); }
+function setBusy(b, busyText){
+  $("genBtn").disabled = b;
+  $("stopBtn").style.display = b ? "inline-block" : "none";
+  if(b && busyText){ $("ansBox").className = "box md wait"; $("ansBox").textContent = busyText; }
+}
+function showErr(msg){ var e = $("deskErr"); e.textContent = msg; e.style.display = "block"; }
+function hideErr(){ $("deskErr").style.display = "none"; }
+function errText(d){
+  try { return (d.error && d.error.message) || JSON.stringify(d).slice(0,160); } catch(_) { return "未知错误"; }
+}
+
+/* ---------- 简易Markdown渲染(先转义再转换) ---------- */
+function esc(s){
+  return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+}
+function renderMD(md){
+  var lines = esc(md).split(/\r?\n/);
+  var html = [], inUL = false, inOL = false, para = [];
+  function flushP(){
+    if(para.length){ html.push("<p>" + inline(para.join(" ")) + "</p>"); para = []; }
+  }
+  function closeLists(){
+    if(inUL){ html.push("</ul>"); inUL = false; }
+    if(inOL){ html.push("</ol>"); inOL = false; }
+  }
+  function inline(s){
+    return s
+      .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
+      .replace(/(^|[^*])\*([^*]+)\*/g, "$1<em>$2</em>")
+      .replace(/`([^`]+)`/g, "<code>$1</code>");
+  }
+  for(var i=0;i<lines.length;i++){
+    var ln = lines[i];
+    if(/^###\s+/.test(ln)){ flushP(); closeLists(); html.push("<h3>" + inline(ln.replace(/^###\s+/,"")) + "</h3>"); }
+    else if(/^####?\s+/.test(ln)){ flushP(); closeLists(); html.push("<h4>" + inline(ln.replace(/^####?\s+/,"")) + "</h4>"); }
+    else if(/^\s*[-*]\s+/.test(ln)){ flushP(); if(!inUL){ closeLists(); html.push("<ul>"); inUL = true; } html.push("<li>" + inline(ln.replace(/^\s*[-*]\s+/,"")) + "</li>"); }
+    else if(/^\s*\d+[.、]\s+/.test(ln)){ flushP(); if(!inOL){ closeLists(); html.push("<ol>"); inOL = true; } html.push("<li>" + inline(ln.replace(/^\s*\d+[.、]\s+/,"")) + "</li>"); }
+    else if(/^\s*(-{3,}|\*{3,})\s*$/.test(ln)){ flushP(); closeLists(); html.push("<hr>"); }
+    else if(/^&gt;\s+/.test(ln)){ flushP(); closeLists(); html.push("<blockquote>" + inline(ln.replace(/^&gt;\s+/,"")) + "</blockquote>"); }
+    else if(ln.trim() === ""){ flushP(); closeLists(); }
+    else { para.push(ln); }
+  }
+  flushP(); closeLists();
+  return html.join("\n");
+}
+</script>
 
 </body>
 </html>
